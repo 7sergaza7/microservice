@@ -1,5 +1,4 @@
 name: Build and Push to AWS ECR
-
 on:
   push:
     branches:
