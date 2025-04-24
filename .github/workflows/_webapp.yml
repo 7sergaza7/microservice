@@ -1,7 +1,19 @@
 name: webapp
 on:
   workflow_call:
-
+    secrets:
+      AWS_ACCESS_KEY_ID:
+        required: true
+        type: string
+      AWS_SECRET_ACCESS_KEY:
+        required: true
+        type: string
+      AWS_REGION:
+        required: true
+        type: string
+      AWS_ACCOUNT_ID:
+        required: true
+        type: string
 jobs:
   build-webapp:
     name: Build and Push Webapp Docker Image to ECR
