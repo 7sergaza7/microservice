@@ -7,4 +7,4 @@ on:
       - 'webapp/**'
 jobs:
   call-deploy:
-    uses: ./.github/workflows/_webapp.yml@main
+    uses: 7sergaza7/task2bcloud/.github/workflows/_webapp.yml@main
