@@ -9,4 +9,4 @@ on:
 
 jobs:
   call-deploy:
-    uses: ./.github/workflows/_eks.yml
+    uses: .github/workflows/_eks.yml
