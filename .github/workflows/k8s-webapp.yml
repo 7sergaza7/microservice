@@ -25,4 +25,4 @@ on:
 
 jobs:
   call-deploy:
-    uses: ./.github/workflows/templates/_k8s.yml
+    uses: ./.github/templates/_k8s.yml
