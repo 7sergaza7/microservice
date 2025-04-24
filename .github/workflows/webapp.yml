@@ -9,7 +9,7 @@ on:
       - '.github/workflows/webapp.yml'
 jobs:
   call-deploy:
-    uses: 7sergaza7/task2bcloud/.github/workflows/templates/_webapp.yml@main
+    uses: 7sergaza7/task2bcloud/.github/workflows/_webapp.yml@main
     secrets:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
