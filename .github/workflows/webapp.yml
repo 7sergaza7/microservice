@@ -7,4 +7,4 @@ on:
       - 'webapp/**'
 jobs:
   call-deploy:
-    uses: ./.github/templates/_webapp.yml
+    uses: ./.github/templates/_webapp.yml@main

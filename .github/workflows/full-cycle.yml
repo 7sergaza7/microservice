@@ -4,8 +4,8 @@ on:
 
 jobs:
   call-deploy:
-    uses: ./.github/templates/_webapp.yml
+    uses: ./.github/templates/_webapp.yml@main
   call-deploy:
-    uses: ./.github/templates/_eks.yml
+    uses: ./.github/templates/_eks.yml@main
   call-deploy:
-    uses: ./.github/templates/_k8s.yml
+    uses: ./.github/templates/_k8s.yml@main

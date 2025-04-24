@@ -1,28 +1,11 @@
-# .github/workflows/template-job.yml
-# name: Template Job
-# on:
-#   workflow_call:
-#     inputs:
-#       environment:
-#         required: true
-#         type: string
-
-# jobs:
-#   deploy:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - run: echo "Deploying to ${{ inputs.environment }}"
-
-
 name: Deploy Manifests to EKS
-
 on:
   push:
     branches:
       - main
     paths:
-      - 'k8s/**'  # Only run when manifests in the k8s/ directory change
+      - 'k8s/**'
 
 jobs:
   call-deploy:
-    uses: ./.github/templates/_k8s.yml
+    uses: ./.github/templates/_k8s.yml@main
