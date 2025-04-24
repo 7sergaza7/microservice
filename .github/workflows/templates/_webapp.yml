@@ -1,11 +1,10 @@
-name: webapp build and push
+name: webapp
 on:
-  push:
-    branches:
-      - main
+  workflow_call:
 
 jobs:
-  build-and-push:
+  build-webapp:
+    name: Build and Push Webapp Docker Image to ECR
     runs-on: ubuntu-latest
 
     steps:
@@ -30,5 +29,6 @@ jobs:
         docker tag webapp:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/common/webapp:latest
 
     - name: Push Docker Image to AWS ECR
+      if: github.ref == 'refs/heads/main'
       run: |
         docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/common/webapp:latest

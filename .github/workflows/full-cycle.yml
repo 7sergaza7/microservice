@@ -1,0 +1,11 @@
+name: full-cicd-wenbapp
+on:
+  workflow_dispatch:
+
+jobs:
+  call-deploy:
+    uses: ./.github/workflows/templates/_webapp.yml
+  call-deploy:
+    uses: ./.github/workflows/templates/_eks.yml
+  call-deploy:
+    uses: ./.github/workflows/templates/_k8s.yml

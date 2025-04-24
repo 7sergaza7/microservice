@@ -1,0 +1,12 @@
+name: Terraform Apply
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'terraform/**'
+
+jobs:
+  call-deploy:
+    uses: ./.github/workflows/templates/_eks.yml

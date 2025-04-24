@@ -1,0 +1,33 @@
+name: eks webapp
+on:
+  workflow_call:
+
+jobs:
+  deploy:
+    name: eks apply webapp
+    runs-on: ubuntu-latest
+    env:
+      CLUSTER_NAME: dev-eks-cluster
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          region: ${{ secrets.AWS_REGION }}
+
+      - name: Update kubeconfig
+        run: |
+          aws eks update-kubeconfig --region ${{ secrets.AWS_REGION }} --name $CLUSTER_NAME
+
+      - name: Deploy Kubernetes manifests
+        run: |
+          kubectl apply -f k8s/
+          kubectl rollout status deployment/webapp-deployment
+          kubectl get svc webapp-svc -n webapp
+          kubectl get pods -n webapp
+          kubectl get deployments -n webapp
