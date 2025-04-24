@@ -6,6 +6,7 @@ on:
     paths:
       - 'webapp/**'
       - '.github/workflows/_webapp.yml'
+      - '.github/workflows/webapp.yml'
 jobs:
   call-deploy:
     uses: 7sergaza7/task2bcloud/.github/workflows/_webapp.yml@main
