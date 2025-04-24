@@ -8,4 +8,4 @@ on:
 
 jobs:
   call-deploy:
-    uses: ./.github/workflows/_k8s.yml@main
+    uses: ./.github/workflows/_k8s.yml
