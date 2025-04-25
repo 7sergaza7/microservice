@@ -38,7 +38,8 @@
 `while true; do wget -q -O- http://a6cb72e95c9e04de5a86bb1c7c73cbb8-893135315.us-east-1.elb.amazonaws.com; done`
 
 ### monitor the load and validate 
-replicas increased
+`watch kubectl get hpa -n webapp`
+replicas increased once cpu bottleneck reached
 
 `Every 2.0s: kubectl get hpa -n webapp                              
 DESKTOP-ICPB06S: Fri Apr 25 12:53:56 2025
