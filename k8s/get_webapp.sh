@@ -3,6 +3,7 @@
 echo "Trying to get service external IP and curl"
 
 for i in {1..5}; do
+
   echo "Attempt $i..."
 
   EXTERNAL_IP=$(kubectl get svc webapp-svc -n webapp -o jsonpath='{.status.loadBalancer.ingress[0].hostname}' 2>/dev/null)
