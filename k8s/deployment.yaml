@@ -1,3 +1,4 @@
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:  
@@ -14,12 +15,18 @@ spec:
     metadata:
       labels:
         app: webapp
+        namespace: webapp
     spec:
       containers:
         - name: webapp
-          image: sergeydiner/webapp:0.1.0
+          image: 692859929342.dkr.ecr.us-east-1.amazonaws.com/common/webapp:latest
           ports:
             - containerPort: 80
+          resources:
+            requests:
+              cpu: "100m"
+            limits:
+              cpu: "200m"
           livenessProbe:
             httpGet:
               path: /healthz
@@ -28,16 +35,3 @@ spec:
             periodSeconds: 3
             failureThreshold: 3
             timeoutSeconds: 2
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: hello-service
-spec:
-  type: LoadBalancer
-  ports:
-    - port: 80
-      targetPort: 5678
-  selector:
-    app: hello
-
