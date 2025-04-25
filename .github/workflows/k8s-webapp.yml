@@ -7,5 +7,5 @@ on:
       - 'k8s/**'
 
 jobs:
-  call-deploy:
-    uses: .github/workflows/_k8s.yml
+  eks-webapp:
+    uses: 7sergaza7/task2bcloud/.github/workflows/_k8s.yml@main

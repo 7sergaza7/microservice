@@ -1,4 +1,4 @@
-name: webapp build and push
+name: webapp image - build and push
 on:
   push:
     branches:

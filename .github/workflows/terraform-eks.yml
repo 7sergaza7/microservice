@@ -1,4 +1,4 @@
-name: Terraform Apply
+name: Terraform-EKS-cluster
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
       - '.github/workflows/terraform-eks.yml'
 
 jobs:
-  call-deploy:
+  eks-cluster:    
     uses: 7sergaza7/task2bcloud/.github/workflows/_eks.yml@main
     secrets:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

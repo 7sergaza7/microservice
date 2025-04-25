@@ -1,13 +1,22 @@
-name: eks webapp
+name: eks-webapp-deploy
 on:
   workflow_call:
+    secrets:
+      AWS_ACCESS_KEY_ID:
+        required: true        
+      AWS_SECRET_ACCESS_KEY:
+        required: true        
+      AWS_REGION:
+        required: true        
+      AWS_ACCOUNT_ID:
+        required: true
 
 jobs:
   deploy:
     name: eks apply webapp
     runs-on: ubuntu-latest
     env:
-      CLUSTER_NAME: dev-eks-cluster
+      CLUSTER_NAME: eks-task
 
     steps:
       - name: Checkout code
@@ -18,7 +27,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          region: ${{ secrets.AWS_REGION }}
+          aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Update kubeconfig
         run: |

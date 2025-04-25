@@ -66,6 +66,7 @@ resource "aws_dynamodb_table" "terraform_lock" {
   tags = var.dynamodb_tags   
 }
 
+# create the EKS cluster
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "20.35.0"
