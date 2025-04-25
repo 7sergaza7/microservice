@@ -4,7 +4,7 @@ on:
 
 jobs:
   call-deploy:
-    uses: 7sergaza7/task2bcloud/.github/workflows/_webapp.yml
+    uses: 7sergaza7/task2bcloud/.github/workflows/_webapp.yml@main
     secrets:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -12,7 +12,7 @@ jobs:
       AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
  
   call-deploy:
-    uses: 7sergaza7/task2bcloud/.github/workflows/_eks.yml
+    uses: 7sergaza7/task2bcloud/.github/workflows/_eks.yml@main
     secrets:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
