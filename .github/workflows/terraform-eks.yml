@@ -1,4 +1,4 @@
-name: Terraform-EKS-cluster
+name: terraform-eks-cluster
 
 on:
   push:

@@ -1,4 +1,4 @@
-name: full-cicd-wenbapp
+name: full-cicd-webapp
 on:
   workflow_dispatch:
 

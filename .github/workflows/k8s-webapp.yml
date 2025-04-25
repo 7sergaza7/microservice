@@ -1,4 +1,4 @@
-name: Deploy Manifests to EKS
+name: deploy-webapp-to-k8s
 on:
   push:
     branches:
