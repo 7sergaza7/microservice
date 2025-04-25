@@ -1,4 +1,4 @@
-name: eks-webapp-deploy
+name: template-eks-webapp-deploy
 on:
   workflow_call:
     secrets:
