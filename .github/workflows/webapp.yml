@@ -1,14 +1,22 @@
 name: webapp image - build and push
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'webapp/**'
-      - '.github/workflows/_webapp.yml'
-      - '.github/workflows/webapp.yml'
+  # push:
+  #   branches:
+  #     - main
+  #   paths:
+  #     - 'webapp/**'
+  #     - '.github/workflows/_webapp.yml'
+  #     - '.github/workflows/webapp.yml'
+  # pull_request:
+  #   branches:
+  #     - main
+  #   paths:
+  #     - 'webapp/**'
+  #     - '.github/workflows/_webapp.yml'
+  #     - '.github/workflows/webapp.yml'
+  workflow_dispatch:
 jobs:
-  call-deploy:
+  webapp:
     uses: 7sergaza7/task2bcloud/.github/workflows/_webapp.yml@main
     secrets:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

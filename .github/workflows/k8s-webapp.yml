@@ -1,12 +1,20 @@
 name: deploy-webapp-to-k8s
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'k8s/**'
-      - '.github/workflows/_k8s.yml'
-      - '.github/workflows/k8s-webapp.yml'
+  # push:
+  #   branches:
+  #     - main
+  #   paths:
+  #     - 'k8s/**'
+  #     - '.github/workflows/_k8s.yml'
+  #     - '.github/workflows/k8s-webapp.yml'
+  # pull_request:
+  #   branches:
+  #     - main
+  #   paths:
+  #     - 'k8s/**'
+  #     - '.github/workflows/_k8s.yml'
+  #     - '.github/workflows/k8s-webapp.yml'
+  workflow_dispatch:
 
 jobs:
   k8s-webapp:

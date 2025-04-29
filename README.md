@@ -5,6 +5,8 @@ Author - Sergey Diner: sergaza@gmail.com
 
 This project demonstrates a full DevOps workflow including infrastructure provisioning using Terraform, containerization with Docker, CI/CD automation using GitHub Actions, and deploying a web application to a managed Kubernetes service on AWS.
 
+**Important:** The AWS ifrastructure destroyed to minimize costs on my account
+
 
 ## ✅ Tools Used
 - **Terraform** for infrastructure as code.
@@ -12,6 +14,8 @@ This project demonstrates a full DevOps workflow including infrastructure provis
 - **AWS cli** for user local mode
 - **Docker** for container build.
 - **Bash** as part of Github actions steps and user cli mode
+
+**Important:** AWS_ACCESS_KEY and AWS_SECRET_ACCESS_KEY are required for provision steps
 
 ## 🔧 1. Infrastructure Provisioning
 
