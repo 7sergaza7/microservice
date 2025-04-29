@@ -37,7 +37,6 @@ jobs:
         docker build -t webapp ./webapp
         docker tag webapp:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/common/webapp:latest
     
-    #for the future implemenetation for pr not to push image
     - name: Push Docker Image to AWS ECR
       if: github.ref == 'refs/heads/main'
       run: |

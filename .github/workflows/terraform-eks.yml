@@ -8,13 +8,13 @@ on:
   #     - 'terraform/**'
   #     - '.github/workflows/_eks.yml'
   #     - '.github/workflows/terraform-eks.yml'
-  pull_request:
-    branches:
-      - main
-    paths:
-      - 'terraform/**'
-      - '.github/workflows/_eks.yml'
-      - '.github/workflows/terraform-eks.yml'
+  # pull_request:
+  #   branches:
+  #     - main
+  #   paths:
+  #     - 'terraform/**'
+  #     - '.github/workflows/_eks.yml'
+  #     - '.github/workflows/terraform-eks.yml'
   workflow_dispatch:
 
 jobs:

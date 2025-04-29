@@ -7,13 +7,13 @@ on:
   #     - 'webapp/**'
   #     - '.github/workflows/_webapp.yml'
   #     - '.github/workflows/webapp.yml'
-  pull_request:
-    branches:
-      - main
-    paths:
-      - 'webapp/**'
-      - '.github/workflows/_webapp.yml'
-      - '.github/workflows/webapp.yml'
+  # pull_request:
+  #   branches:
+  #     - main
+  #   paths:
+  #     - 'webapp/**'
+  #     - '.github/workflows/_webapp.yml'
+  #     - '.github/workflows/webapp.yml'
   workflow_dispatch:
 jobs:
   webapp:
