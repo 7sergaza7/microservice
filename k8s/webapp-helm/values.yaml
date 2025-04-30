@@ -1,0 +1,14 @@
+replicaCount: 1
+image:
+  repository: sergeydiner/webapp #<account id>.dkr.ecr.<region>.amazonaws.com/common/webapp
+  tag: 0.1.0 #latest
+
+namespace: webapp
+app: webapp
+port: 80
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 15
