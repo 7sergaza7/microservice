@@ -1,12 +1,14 @@
 name: webapp image - build and push
 on:
-  # push:
-  #   branches:
-  #     - main
-  #   paths:
-  #     - 'webapp/**'
-  #     - '.github/workflows/_webapp.yml'
-  #     - '.github/workflows/webapp.yml'
+  push:
+    tags:
+      - 'v*.*.*'
+    # branches:
+    #   - main
+    # paths:
+    #   - 'webapp/**'
+    #   - '.github/workflows/_webapp.yml'
+    #   - '.github/workflows/webapp.yml'
   # pull_request:
   #   branches:
   #     - main
