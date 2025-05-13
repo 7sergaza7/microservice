@@ -1,4 +1,4 @@
-# task2bcloud
+# microservice lifecycle
 Author - Sergey Diner: sergaza@gmail.com
 
 ## 📌 Introduction
@@ -32,7 +32,7 @@ The provisioning process is initially performed manually using Terraform CLI and
 
 Terraform uses shared AWS modules to adhere to best practices.
 
-**Important:** The [`backend.tf`](https://github.com/7sergaza7/task2bcloud/blob/main/terraform/backend.tf) file must be **commented out** for the first `terraform apply` and **uncommented** for the second run to migrate the state to S3.
+**Important:** The [`backend.tf`](https://github.com/7sergaza7/microservice/blob/main/terraform/backend.tf) file must be **commented out** for the first `terraform apply` and **uncommented** for the second run to migrate the state to S3.
 
 #### 1️⃣ Initial Terraform Run:
 
@@ -42,7 +42,7 @@ terraform init -var-file="dev.tfvars"
 terraform apply -var-file="dev.tfvars"
 ```
 #### 2️⃣ Second Terraform Run:
-Ensure  is uncommented [backend.tf](https://github.com/7sergaza7/task2bcloud/blob/main/terraform/backend.tf)
+Ensure  is uncommented [backend.tf](https://github.com/7sergaza7/microservice/blob/main/terraform/backend.tf)
 
 ```bash
 terraform init --upgrade
@@ -51,11 +51,11 @@ terraform plan -var-file="dev.tfvars"
 terraform apply -var-file="dev.tfvars" --auto-approve
 ```
 
-All the steps converted to github actions in [_eks.yml workflow](https://github.com/7sergaza7/task2bcloud/blob/main/.github/workflows/_eks.yml)
+All the steps converted to github actions in [_eks.yml workflow](https://github.com/7sergaza7/microservice/blob/main/.github/workflows/_eks.yml)
 
 ## WebApp - Nginx Based Docker Image with Health Check
 
-The [webapp sources directory](9https://github.com/7sergaza7/task2bcloud/tree/main/webapp).
+The [webapp sources directory](9https://github.com/7sergaza7/microservice/tree/main/webapp).
 This project builds a Docker image based on Nginx, adds a /healthz endpoint for health checking, and pushes the image to a private AWS ECR repository under common/webapp:latest.
 The application serves static content and provides a lightweight /healthz route for container health monitoring.
 
@@ -64,7 +64,7 @@ The AWS prerequisites befor pushing the image:
 - An AWS ECR private repository created manually (common/webapp)
 - Permissions provided to push to ECR (IAM access)
 
-The build flow. All the steps below converted to github actions steps in [_webapp.yml workflow](https://github.com/7sergaza7/task2bcloud/blob/main/.github/workflows/_webapp.yml)
+The build flow. All the steps below converted to github actions steps in [_webapp.yml workflow](https://github.com/7sergaza7/microservice/blob/main/.github/workflows/_webapp.yml)
 ```bash
  [ docker build -t webapp ./webapp ]
          ↓
@@ -75,7 +75,7 @@ The build flow. All the steps below converted to github actions steps in [_webap
 
 ## Applying kubernetes webapp manifests on EKS cluster:
 
-This repository contains Kubernetes manifests located in the [`k8s`](https://github.com/7sergaza7/task2bcloud/tree/main/k8s) directory. These manifests define the desired state webapp application (webapp image from ECR registry) and exposing it as external ip using LoadBalancer. 
+This repository contains Kubernetes manifests located in the [`k8s`](https://github.com/7sergaza7/microservice/tree/main/k8s) directory. These manifests define the desired state webapp application (webapp image from ECR registry) and exposing it as external ip using LoadBalancer. 
 The manifests can be applied to EKS cluster using `kubectl` manually or automatically in github actions.
 
 🛠 Prerequisites:
@@ -95,22 +95,22 @@ The manifests can be applied to EKS cluster using `kubectl` manually or automati
   ```sh
   kubectl get svc webapp-svc -n webapp -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'
   ```
-- using script [get_webapp.sh](https://github.com/7sergaza7/task2bcloud/blob/main/k8s/get_webapp.sh)
+- using script [get_webapp.sh](https://github.com/7sergaza7/microservice/blob/main/k8s/get_webapp.sh)
 
-The applying manifiests steps on EKS implemented to github actions in [_k8s.yml workflow](https://github.com/7sergaza7/task2bcloud/blob/main/.github/workflows/_k8s.yml).
+The applying manifiests steps on EKS implemented to github actions in [_k8s.yml workflow](https://github.com/7sergaza7/microservice/blob/main/.github/workflows/_k8s.yml).
 
 
 ## ⚡ GitHub Actions CI/CD Pipelines
 
 GitHub Actions workflows automate the deployment process.
-Workflows directory: [.github](https://github.com/7sergaza7/task2bcloud/tree/main/.github/workflows)
+Workflows directory: [.github](https://github.com/7sergaza7/microservice/tree/main/.github/workflows)
 
 
 🚀 Pipelines:
-- Full CI/CD Pipeline (Triggered manually) – [full-cicd-webapp](https://github.com/7sergaza7/task2bcloud/).
-- WebApp Build & Push (Triggered automatically) – [webapp image - build and push](https://github.com/7sergaza7/task2bcloud/actions/runs/14668275151).
-- K8s Manifests Deployment (Triggered automatically) – [deploy-webapp-to-k8s](https://github.com/7sergaza7/task2bcloud/actions/runs/14668311103).
-- AWS Infrastructure Provisioning (Triggered automatically) – [terraform-eks-cluster](https://github.com/7sergaza7/task2bcloud/actions/runs/14668311094).
+- Full CI/CD Pipeline (Triggered manually) – [full-cicd-webapp](https://github.com/7sergaza7/microservice/).
+- WebApp Build & Push (Triggered automatically) – [webapp image - build and push](https://github.com/7sergaza7/microservice/actions/runs/14668275151).
+- K8s Manifests Deployment (Triggered automatically) – [deploy-webapp-to-k8s](https://github.com/7sergaza7/microservice/actions/runs/14668311103).
+- AWS Infrastructure Provisioning (Triggered automatically) – [terraform-eks-cluster](https://github.com/7sergaza7/microservice/actions/runs/14668311094).
 
 
 ## 🔥 Load Testing with HPA (Horizontal Pod Autoscaling)
