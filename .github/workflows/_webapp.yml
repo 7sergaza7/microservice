@@ -53,32 +53,3 @@ jobs:
         push: true
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
-
-
-    #692859929342.dkr.ecr.us-east-1.amazonaws.com/common/webapp:latest
-
-    #${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/common/webapp:latest
-
-
-
-
-    # - name: Build Docker Image
-    #   run: |
-    #     docker build -t webapp ./webapp
-    #     docker tag webapp:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/common/webapp:latest
-    
-    # - name: Push Docker Image to AWS ECR
-    #   if: github.ref == 'refs/heads/main'
-    #   run: |
-    #     docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/common/webapp:latest
-
-
-
-
-      # - name: Build and push
-      #   uses: docker/build-push-action@v6
-      #   with:
-      #     context: .
-      #     push: ${{ github.event_name != 'pull_request' }}
-      #     tags: ${{ steps.meta.outputs.tags }}
-      #     labels: ${{ steps.meta.outputs.labels }}
