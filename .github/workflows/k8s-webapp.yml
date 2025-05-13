@@ -18,7 +18,7 @@ on:
 
 jobs:
   k8s-webapp:
-    uses: 7sergaza7/task2bcloud/.github/workflows/_k8s.yml@main
+    uses: 7sergaza7/microservice/.github/workflows/_k8s.yml@main
     secrets:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
